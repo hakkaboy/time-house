@@ -15,7 +15,11 @@
         </activity>
         <activity android:name="PradaPuzzleActivity" android:screenOrientation="landscape"
              android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
-            <intent-filter>
+           
+        </activity>
+        <activity android:name="PradaPuzzleGameScene" android:screenOrientation="landscape">
+            
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
