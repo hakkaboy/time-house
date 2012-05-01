@@ -1,12 +1,37 @@
 package com.hakka.pluto.example;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class PlutoActivity extends ListActivity {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-    }
+	private String[] listItems = { "PradaPuzzleActivity", "PradaPuzzleGameScene",
+			"TestClipActivity", "Other" };
+	private ArrayAdapter adapter;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		this.adapter = new ArrayAdapter(this,
+				android.R.layout.simple_list_item_1, listItems);
+		setListAdapter(adapter);
+	}
+
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		String item = (String) adapter.getItem(position);
+		Intent intent = new Intent();
+		try {
+			intent.setClass(this,Class.forName("com.hakka.pluto.example." + item));
+			startActivity(intent);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }
