@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class PlutoActivity extends ListActivity {
-	private String[] listItems = { "com.hakka.pluto.example.PradaPuzzleActivity", "com.hakka.pluto.example.PradaPuzzleGameScene",
+	private String[] listItems = {
+			"com.hakka.pluto.example.PradaPuzzleActivity",
+			"com.hakka.pluto.example.PradaPuzzleGameScene",
 			"com.hakka.pluto.example.test.TestClipActivity", "Other" };
 	private ArrayAdapter adapter;
 
@@ -26,7 +28,10 @@ public class PlutoActivity extends ListActivity {
 		String item = (String) adapter.getItem(position);
 		Intent intent = new Intent();
 		try {
-			intent.setClass(this,Class.forName("" + item));
+			intent.setClass(this, Class.forName("" + item));
+			Bundle bundle = new Bundle();
+			bundle.putString("puzzleClass","com.hakka.pluto.example.module.Puzzle");
+			intent.putExtras(bundle);
 			startActivity(intent);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
